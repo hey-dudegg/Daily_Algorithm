@@ -6,20 +6,20 @@
 
 typedef enum { false, true} bool;
 
-/* ±¸Çö */
+/* êµ¬í˜„ */
 typedef struct pair {
-	char* key;				// key´Â ¹®ÀÚ¿­
+	char* key;				// keyëŠ” ë¬¸ìì—´
 	int value;
 }pair;
 
-/* ±¸Á¶Ã¼ */
+/* êµ¬ì¡°ì²´ */
 typedef enum state {
 	EMPTY,
 	USED,
 	DELETED
 }state;
 
-/* ÇØ½Ã ³ëµå */
+/* í•´ì‹œ ë…¸ë“œ */
 typedef struct node {
 	state state;
 	pair* data;
@@ -51,7 +51,7 @@ pair* make_pair(char* key, int value) {
 	pair* new_pair = (pair*)malloc(sizeof(pair));
 	if (new_pair == NULL) free (new_pair);
 
-	new_pair->key = strdup(key);					// mallocÀ» È£ÃâÇÏ¿© stringÀÇ »çº»¿¡ ´ëÇÑ ±â¾ïÀåÄ¡ °ø°£À» ¿¹¾àÇÑ´Ù.
+	new_pair->key = strdup(key);					// mallocì„ í˜¸ì¶œí•˜ì—¬ stringì˜ ì‚¬ë³¸ì— ëŒ€í•œ ê¸°ì–µì¥ì¹˜ ê³µê°„ì„ ì˜ˆì•½í•œë‹¤.
 	new_pair->value = value;
 
 	return new_pair;
@@ -331,14 +331,14 @@ int main()
 }
 
 
-///* ¹è¿­ÀÇ Æ÷ÀÎÅÍ ¿¬»ê ¿¬½À */
+///* ë°°ì—´ì˜ í¬ì¸í„° ì—°ì‚° ì—°ìŠµ */
 //#include <stdio.h>
 //
 //int main() {
 //	int arr[3] = { 10, 20, 30 };
 //
-//	printf("¹è¿­ÀÇ ÀÌ¸§À» ÀÌ¿ëÇÏ¿© ¹è¿­ ¿ä¼Ò¿¡ Á¢±Ù : %d, %d, %d\n", arr[0], arr[1], arr[2]);
-//	printf("¹è¿­ÀÇ ÀÌ¸§À¸·Î Æ÷ÀÎÅÍ ¿¬»êÀ» ÇÑ µÚ ¹è¿­ ¿ä¼Ò¿¡ Á¢±Ù : %d %d %d\n", *(arr + 0), *(arr + 1), *(arr + 2));
+//	printf("ë°°ì—´ì˜ ì´ë¦„ì„ ì´ìš©í•˜ì—¬ ë°°ì—´ ìš”ì†Œì— ì ‘ê·¼ : %d, %d, %d\n", arr[0], arr[1], arr[2]);
+//	printf("ë°°ì—´ì˜ ì´ë¦„ìœ¼ë¡œ í¬ì¸í„° ì—°ì‚°ì„ í•œ ë’¤ ë°°ì—´ ìš”ì†Œì— ì ‘ê·¼ : %d %d %d\n", *(arr + 0), *(arr + 1), *(arr + 2));
 //
-//	/* arrÀÌ ¹è¿­ÀÇ ÀÌ¸§ÀÌ°Å³ª Æ÷ÀÎÅÍÀÌ°í nÀÌ Á¤¼öÀÏ ¶§, arr[n] == **(arr + n) */
+//	/* arrì´ ë°°ì—´ì˜ ì´ë¦„ì´ê±°ë‚˜ í¬ì¸í„°ì´ê³  nì´ ì •ìˆ˜ì¼ ë•Œ, arr[n] == **(arr + n) */
 //}
