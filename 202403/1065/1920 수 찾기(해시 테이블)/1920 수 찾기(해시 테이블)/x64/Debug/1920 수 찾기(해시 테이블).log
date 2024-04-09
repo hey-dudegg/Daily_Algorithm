@@ -1,0 +1,7 @@
+﻿  hash.c
+C:\Work\algorithm\1065\1920 수 찾기(해시 테이블)\1920 수 찾기(해시 테이블)\hash.c(49,7): warning C4273: '_strdup': dll 연결이 일치하지 않습니다.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\ucrt\string.h(148,38):
+  '_strdup'의 이전 정의를 참조하십시오.
+  
+C:\Work\algorithm\1065\1920 수 찾기(해시 테이블)\1920 수 찾기(해시 테이블)\hash.c(215,7): warning C4101: 'hash' :참조되지 않은 지역 변수입니다.
+  1920 수 찾기(해시 테이블).vcxproj -> C:\Work\algorithm\1065\1920 수 찾기(해시 테이블)\x64\Debug\1920 수 찾기(해시 테이블).exe

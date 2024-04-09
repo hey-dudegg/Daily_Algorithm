@@ -1,5 +1,7 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <malloc.h>
+
 
 #define MAX_LOAD_FACTOR 0.5
 #define INITIAL_CAPACITY 7
@@ -222,114 +224,58 @@ void print_hash_find(pair* result)
 int main()
 {
 	hash hash;
+	int num1, num2;
 
-	printf("----- initialize -----\n");
+	scanf_s("%d", &num1);
+
+	/* 배열의 동적 할당 */
+	int* arr1 = (int*)malloc(num1 * sizeof(int));
+	if (arr1 == NULL) {
+		printf("Memory allocation failed.\n");
+		return -1;
+	}
+
+	/* 수 입력 */
+	for (int i = 0; i < num1; i++) {
+		scanf_s("%d", &arr1[i]);
+	}
+
+	/* 해시 테이블 초기화 */
 	initialize(&hash);
-	print_hash(&hash);
 
-	printf("----- insert -----\n");
-	insert(&hash, make_pair("hello", 1));
-	print_hash(&hash);
+	/* 입력받은 수 해시 테이블 삽입 */
+	for (int i = 0; i < num1; i++) {
+		struct pair *pair = make_pair("hello", arr1[i]);
+		insert(&hash, pair);
+	}
 
-	insert(&hash, make_pair("world", 2));
-	print_hash(&hash);
+	/* 문제 입력 */
+	scanf_s("%d", &num2);
+	int* arr2 = (int*)malloc(num2 * sizeof(int));
+	for (int i = 0; i < num2; i++) {
+		scanf_s("%d", &arr2[i]);
+	}
 
-	insert(&hash, make_pair("my name", 3));
-	print_hash(&hash);
-
-	insert(&hash, make_pair("is sikpang", 4));
-	print_hash(&hash);
-
-	insert(&hash, make_pair("nice", 5));
-	print_hash(&hash);
-
-	insert(&hash, make_pair("to meet you", 6));
-	print_hash(&hash);
-
-	insert(&hash, make_pair("this is", 7));
-	print_hash(&hash);
-
-	insert(&hash, make_pair("hash_table", 8));
-	print_hash(&hash);
-
-	insert(&hash, make_pair("thank you", 9));
-	print_hash(&hash);
-
-	printf("\n----- find -----\n");
-	print_hash_find(find(&hash, "hash_table"));
-	print_hash_find(find(&hash, "thank you!"));
-	print_hash_find(find(&hash, "thank you"));
-	print_hash_find(find(&hash, "hash_tablee"));
-
-
-	printf("\n----- erase -----\n");
-	erase(&hash, "mmm");
-	print_hash(&hash);
-
-	erase(&hash, "this is");
-	print_hash(&hash);
-
-	erase(&hash, "is sikpang");
-	print_hash(&hash);
-
-	erase(&hash, "world");
-	print_hash(&hash);
-
-	erase(&hash, "hello");
-	print_hash(&hash);
-
-
-	printf("\n----- edge_case -----\n");
-	print_hash_find(find(&hash, "hello"));	// find the erased key
-	print_hash_find(find(&hash, "world"));
-	print_hash_find(find(&hash, "nice"));	// pass DELETED node when find
-
-	insert(&hash, make_pair("world", 10));	// insert to DELETED node
-	print_hash(&hash);
-
-	insert(&hash, make_pair("hello", 11));
-	print_hash(&hash);
-
-	insert(&hash, make_pair("abc", 12));
-	print_hash(&hash);
-
-	insert(&hash, make_pair("abcd", 13));
-	print_hash(&hash);
-
-	print_hash_find(find(&hash, "abcd"));	// pass DELETED node when find
-	printf("\n");
-
-	insert(&hash, make_pair("abcde", 14));	// re_allocate
-	print_hash(&hash);
-
-	print_hash_find(find(&hash, "abcd"));	// find again!
-	print_hash_find(find(&hash, "world"));
-	print_hash_find(find(&hash, "my name"));
-	print_hash_find(find(&hash, "is sikpang"));
-	print_hash_find(find(&hash, "abcdef"));
-	printf("\n");
-
-	printf("\n----- clear -----\n");
-	clear(&hash);
-	print_hash(&hash);
-
-	clear(&hash);			// double clear
-	print_hash(&hash);
-
-	insert(&hash, make_pair("abc", 1));	// use after clear
-	print_hash(&hash);
-
-	insert(&hash, make_pair("abcd", 2));
-	print_hash(&hash);
-
-	insert(&hash, make_pair("abcde", 3));
-	print_hash(&hash);
-
-	print_hash_find(find(&hash, "abc"));	// find again again!
-	print_hash_find(find(&hash, "abcd"));
-	print_hash_find(find(&hash, "world"));
+	/* 해시 테이블에서 인덱스로 찾고 bool 값 출력 */
+	for (int i = 0; i < num2; i++) {
+		if (find(&hash, arr2[i])) printf("1\n");
+		else printf("0");
+	}
 }
 
+//
+//pair* make_pair(char* key, int value);
+//void initialize(hash* hash);
+//static unsigned hashing(unsigned char* str);
+//void insert(hash* hash, pair* data);
+//static int find_idx(hash* hash, char* key);
+//void erase(hash* hash, char* key);
+//pair* find(hash* hash, char* key);
+//static int get_next_prime(int num);
+//static void re_allocate(hash* hash, int size);
+//void clear(hash* hash);
+//void print_hash(hash* hash);
+//void print_hash_find(pair* result);
 
 ///* 배열의 포인터 연산 연습 */
 //#include <stdio.h>
