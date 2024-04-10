@@ -6,6 +6,18 @@
 # 입력으로 주어진 숫자 N개의 합을 출력한다.
 
 ## 풀이
-#
-#
+# 띄어쓰기 없이 입력되는 숫자를 파싱해서 배열에 저장한다.
+# 배열의 인덱스를 더한 sum을 출력한다.
 #####################################
+
+import sys
+
+input = input()
+num = int(input)
+sum = 0
+input2 = input()
+
+for i in range(num):
+    sum += int(input2[i])
+
+print(sum)
