@@ -8,17 +8,47 @@
 # 생성자를 기준으로 생각할 것인지, 셀프 넘버를 기준으로 생각할 것인지를 먼저 고려했습니다.
 # 생성자를 기준으로, 1부터 10000까지의 수를 배열에 스트링 형식으로 담습니다.
 # 스트링의 길이만큼 생성자들을 담고 이 숫자는 셀프 넘버가 아니므로 배열의 인덱스로 제거합니다.
+
+## 나아질 점
+# 출력되는 데이터를 보고, 문제가 되는 지점을 정확히 짚어 문제점을 특정했어야 시간과 노력을 줄일 수 있었을 것입니다.
+# 조건문을 작성할 때, 데이터의 흐름을 확실히 하기 위해 psudo 코드를 작성하고 코드로 번역하는 느낌으로 
+# 코딩하는 연습이 필요한 것 같습니다.
+# 현재의 수준에서, 제가 통과시킨 코드를 스스로 최적화시키는 것 보다(물론 의미 있겠지만), 남이 쓴 최적화된 코드를
+# 참고해보고, 새로운 문제를 더 푸는 것이 나을 것 같습니다.
+
+## 남의 코드 요약
+# 1. 각 자리의 수를 나머지와 나눗셈을 이용해서 구한 뒤 하나의 빈 리스트에 담습니다.
+# 2. set() 자료형으로 중복을 제거합니다.
+# 3. 셀프 넘버를 출력하는 것이 목적이기 때문에 not in을 이용해서 출력합니다.
 ###########################################
-arr = [0] * 10000
 
-for i in range(10000) :
-    arr[i] = str(i)
+maxlen = 10001
+arr = [0] * maxlen
+test = [0] * maxlen
 
-for i in range(10000) :
-    for j in range(len(arr[i])) :
-        sum = 0
-        sum += int(arr[i][j])
-        if sum == arr[sum] :
-            arr[sum] = 0
+for i in range(1, maxlen) :
+    arr[i - 1] = str(i)
 
-print(arr)
+for i in range(1, maxlen) :
+    sum = i
+    
+    for j in range(len(arr[i - 1])) :
+        sum += int(arr[i - 1][j])
+    test[i - 1] = sum
+
+test.sort()
+for i in range(len(test)) :
+    if test[i] < maxlen :
+        arr[test[i] - 1] = 0
+
+for i in range(maxlen) :
+    if arr[i - 1] != 0 :
+        print(arr[i - 1])
+
+    # try :
+
+    # finally :
+        # continue
+
+# print(test)
+# print(arr)
