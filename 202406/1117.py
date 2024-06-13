@@ -10,28 +10,18 @@
 # 다음 예는 5×6 종이에, x=2이고, c=2이고, (x1, y1) = (1, 1), (x2, y2) = (3, 2)인 경우이다.
 #############################
 
-#include <iostream>
-using namespace std;
+import sys
+input = sys.stdin.readline
 
-typedef long long ll;
-int main() {
-	ll w, h, f, c, x1, y1, x2, y2;
-	cin >> w >> h >> f >> c >> x1 >> y1 >> x2 >> y2;
-	ll area = (x2 - x1) * (y2 - y1) * (c+1);
-	if (f <= w / 2) { //왼쪽 크기 <= 오른쪽 크기
-		if (f <= x1) { //왼쪽 영향 X
-			cout << w*h - area;
-		}
-		else { //왼쪽 영향 받음
-			cout << w * h - (area + (min(f, x2) - x1) * (y2 - y1) * (c+1));
-		}
-	} 
-	else { //왼쪽 크기 > 오른쪽 크기
-		if (w <= x1 + f) { //오른쪽 영향 X
-			cout << w * h - area;
-		}
-		else { //오른쪽 영향 받음
-			cout << w * h - (area + (min(w, f + x2) - (f + x1)) * (y2 - y1) * (c+1));
-		}
-	}
-}
+W, H, f, c, x1, y1, x2, y2 = map(int, input().split())
+
+boundary = min(W-f, f)
+
+if x1 <= boundary <= x2:
+    k = 2 * (boundary-x1) + (x2-boundary)
+elif boundary <= x1:
+    k = (x2-x1)
+else: 
+    k = 2 * (x2-x1)
+    
+print(W*H - k * (c+1) * (y2-y1))
