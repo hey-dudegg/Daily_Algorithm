@@ -47,3 +47,21 @@ def solution(nums):
         answer = selection
     
     return answer
+
+def solution(nums):
+    # 입력 : 1차원 리스트
+    # 출력 : 가장 많은 종류의 폰켓몬 선택
+    # 최대 선택 갯수 구하기
+    # 중복되는 종류 없애기(집합)
+    answer = 0
+    set_nums = set(nums)
+    # 만약 최대 갯수보다 종류가 많다면 -> 종류
+    if len(nums)/2 < len(set_nums):
+        answer = len(nums)/2
+    # 종류가 최대 갯수보다 많다면 -> 최대 갯수
+    else:
+        answer = len(set_nums)
+    
+    # O(N^2) = 100M
+    
+    return answer
