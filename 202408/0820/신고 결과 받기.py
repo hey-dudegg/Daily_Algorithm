@@ -20,27 +20,30 @@
 
 def solution(id_list, report, k):
     answer = []
-    # reportTable: 신고 당한 사람을 누가 신고했는지 dict
+    # reportTable: {신고 당한 사람: [신고한 사람]}
     reportTable = {}
     for id in id_list:
         reportTable[id] = []
         
-    # 테이블 채우기
+    # reportTable 채우기
     for rep in set(report):
-        reporter, reported = rep.split() # 공백을 기준으로
+        reporter, reported = rep.split()
         reportTable[reported].append(reporter)
+    
         
     # 신고 당한 사람이 unique하게 몇번 신고당했는지 확인
     # bannedTable: 유저리스트 -> 누가 정지됐는지 확인하는 테이블
-    bannedTable = {}
+    
+    bannedTable = {} # {신고 당한 사람:신고 여부(True/False)}
     for id in id_list:
         if len(reportTable[id]) >= k:
             bannedTable[id] = True
         else:
             bannedTable[id] = False
+    
     #  - k랑 비교
     # id_list를 기준으로 내가 신고한 사람 중에 몇명이나 정지됐는지 확인
-    mailCntTable = {}
+    mailCntTable = {} # {신고한 사람: 받은 메일 수}
     for id in id_list:
         mailCntTable[id] = 0
         
