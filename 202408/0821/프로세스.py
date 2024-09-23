@@ -27,6 +27,8 @@ O(n^2) = 10T
 O(n^3) = 1M
 
 느낀점
+현재의 것을 맨 뒤로 빼고, 자신보다 우선순위가 높은 큐들을 계속 삭제하고 그 숫자를 세면 된다.
+ -> 큐의 원리를 활용하면 됨.
 from collections import deque
 que = deque() -> 디큐 선언
 enumerate() -> 새 정렬된 리스트를 반환합니다.
