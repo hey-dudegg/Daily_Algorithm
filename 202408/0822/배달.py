@@ -1,4 +1,4 @@
-""" 23분까지 문제 읽어보기
+""" 
 다익스트라 알고리즘: 최단경로 탐색 활용
 - 마을이랑 마을 사이의 소요시간(경로)가 주어지고
 - 주어진 제한시간 K 안에 배달할 수 있는 마을의 숫자를 찾는 문제
@@ -52,7 +52,7 @@ def solution(N, road, K):
         cur_node, cur_dist = queue.popleft()
         
         for node, dist in graph[cur_node]:
-            new_dist = cur_dist + dist
+            new_dist = cur_dist+ dist
             if distance[node] > new_dist:
                 distance[node] = new_dist
                 queue.append((node, distance[node]))

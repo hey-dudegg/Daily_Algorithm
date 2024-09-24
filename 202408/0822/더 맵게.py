@@ -31,7 +31,7 @@ def solution(scoville, K):
     # 반복해서 최소값을 꺼낸다. min1과 min2를 꺼내서 계산해서 다시 힙에 push한다.
     while heap[0] < K:
             # 예외 처리
-        if len(heap) < 2:
+        if len(heap) == 1:
             return -1
 
         answer += 1
