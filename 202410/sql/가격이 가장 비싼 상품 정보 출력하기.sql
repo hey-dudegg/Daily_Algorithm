@@ -6,3 +6,5 @@ SELECT *
 from food_product
 where price in (select max(price)
                from food_product)
+
+SELECT * FROM FOOD_PRODUCT WHERE PRICE IN (SELECT MAX(PRICE) FROM FOOD_PRODUCT)
