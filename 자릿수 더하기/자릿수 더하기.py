@@ -11,3 +11,18 @@ for i in range(len(n)-1):
     sum += int(n[i])
     
 print(sum)
+
+
+# 재귀 방식
+def sol1(n):
+    ans = 0
+
+    if n < 10:
+        return n
+    
+    return n % 10 + sol1(n // 10)
+
+# 정규식 방식
+def sol2(n):
+    return sum([int(i) for i in str(n)])
+    print("결과 : {}".format(sum_digit(123)))
